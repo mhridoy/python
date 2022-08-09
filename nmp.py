@@ -32,6 +32,5 @@ def app():
             st.text("Under construction")
 	
 
-else: 
-	print("No input")
-    
+	else: 
+		print("No input")
