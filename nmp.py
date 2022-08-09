@@ -6,7 +6,7 @@ import urllib.request
 import json
 
 def app():
-    text = st.text_input("Enter your IP address" )
+    IP = st.text_input("Enter your IP address" )
     if(st.button("Submit")):
         ip = IP
         st.write(IP)
