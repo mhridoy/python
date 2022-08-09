@@ -30,5 +30,5 @@ def app():
         with col3:
             st.warning ("Port Scanning Result")
             st.text("Under construction")
-      else: 
-		print("No input")
+    else:
+        print("No input")
