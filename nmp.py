@@ -1,23 +1,37 @@
-import socket
+import requests as re
+from sys import argv
 import streamlit as st
 
-def app():
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+import urllib.request
+import json
 
-    target = st.text_input("Enter Target IP: ")
-    portNumber = st.text_input("Port Number")
-    submit = st.button("Click me!")
-    if submit:
-       # port_range = st.slider('Set the port range', 1, 22, 100)
-        def scanner(port):
+def app():
+    text = st.text_input("Enter your IP address" )
+    if(st.button("Submit")):
+        ip = IP
+        st.write(IP)
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.success("IP Details : Location")
+            result = re.get('http://ip-api.com/json/',ip)
+            st.write(result.json())    
+
+        with col2:
+
+            st.info ("IP= Residential or Hosting")
+            response = urllib.request.Request("http://v2.api.iphub.info/ip/{}".format(ip))
+            response.add_header("X-Key", "MTgxMzM6N2o0Y3BDSGdnRGVoRFJXazExS2RxVkZ2cXlnbFJEQnQ=")
+
             try:
-                sock.connect((target, port))
-                return True
+                response = json.loads(urllib.request.urlopen(response).read().decode())
+                st.write(response)
             except:
-                return False
-        if scanner(portNumber):
-            st.write('[*] Port', portNumber, '/tcp','is open')
-        # for portNumber in range(1,port_range):
-        #     st.write("Scanning port", portNumber)
-        #     if scanner(portNumber):
-        #         st.write('[*] Port', portNumber, '/tcp','is open')
+                st.write("HTTP 403")
+        with col3:
+            st.warning ("Port Scanning Result")
+            st.text("Under construction")
+	
+
+else: 
+	print("No input")
+    
