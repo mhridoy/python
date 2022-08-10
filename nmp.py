@@ -29,6 +29,10 @@ def app():
                 st.write("HTTP 403")
         with col3:
             st.warning ("Port Scanning Result")
-            st.text("Under construction")
+			
+            url = "https://api.viewdns.info/portscan/"
+            params = {'host' :ip,'apikey':'9acdf74922dac459d3032fcbe11965dd874f317b', 'output':'json'}
+            req = re.get(url,params=params)
+            st.write(req.json())
     else:
         print("No input")
