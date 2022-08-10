@@ -26,13 +26,18 @@ def app():
                 response = json.loads(urllib.request.urlopen(response).read().decode())
                 st.write(response)
             except:
-                st.write("HTTP 403")
+                st.write("Can't process")
         with col3:
             st.warning ("Port Scanning Result")
 			
             url = "https://api.viewdns.info/portscan/"
             params = {'host' :ip,'apikey':'9acdf74922dac459d3032fcbe11965dd874f317b', 'output':'json'}
-            req = re.get(url,params=params)
-            st.write(req.json())
+            url = "https://api.viewdns.info/portscan/"
+            params = {'host' :ip,'apikey':'9acdf74922dac459d3032fcbe11965dd874f317b', 'output':'json'}
+            try:
+                req = re.get(url,params=params)
+                st.write(req.json())
+            except:
+                st.write("Can't process")
     else:
         print("No input")
