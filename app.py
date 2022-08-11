@@ -14,11 +14,11 @@ def chrome(headless=False):
         opt.add_argument("--headless")
     opt.add_experimental_option('excludeSwitches', ['enable-logging'])
     opt.add_argument("--disable-popup-blocking")
-    browser = webdriver.Chrome(executable_path=r'chromedriver.exe', options=opt,desired_capabilities=d)
+    browser = webdriver.Chrome(executable_path=r'/chromedriver.exe', options=opt,desired_capabilities=d)
     browser.implicitly_wait(10)
     return browser
 st.title ("Welcome to LinkedIn Profile Scrapping")
-text = st.text_input("Enter your LinkedIn Profile")
+
 ## Pass True if you want to hide chrome browser
 browser = chrome(True)
 browser.get('https://www.linkedin.com/uas/login')
@@ -41,7 +41,7 @@ info = []
 
 
 
-
+text = st.text_input("Enter your LinkedIn Profile")
 if(st.button("Submit")):
 
 
